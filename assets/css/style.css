@@ -1,0 +1,49 @@
+body{
+    background: url("movies.jpg");
+}
+  #result-list{
+      text-shadow: 2px 2px red;
+      
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size:30px;
+  }
+  
+  .col-md-4{
+    padding: 20px 0;
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #eee;
+    text-align: center;
+  }
+  .col-md-2 {
+      color: pink;
+  }
+  img {
+    border-radius: 8px;
+  }
+
+  .h2 {
+    text-shadow: 2px 2px red;
+    font-size: 20px;
+    color: grey;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    
+  }
+
+  .col-md-8{
+      color:wheat;
+  }
+ 
+  .container {
+   
+    color:peachpuff;
+    margin: 0 auto;
+  }
+  
+#list-list {
+    font-size: 30px;
+    color:red;
+    
+}
+  
