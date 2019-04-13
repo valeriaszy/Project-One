@@ -28,6 +28,47 @@ class movie {
     }
 }
 
+document.querySelector("#run-search").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    console.log("Clicked")
+    var search = document.querySelector("#search-title").value;
+    console.log(search);
+    var promise = searchTitle(search,1)
+
+    promise.then(function(movieArray) {
+    movieArray.forEach(function(movie){
+
+    console.log(movie)
+
+    var resultDiv = document.createElement("div");
+    resultDiv.className = "col-md-4";
+    var imgWrapper = document.createElement("div")
+    
+    imgWrapper.className = "col-md-4";
+    var imgEl = document.createElement("img");
+    imgEl.setAttribute('src',movie.poster);
+    imgWrapper.appendChild(imgEl)
+    resultDiv.appendChild(imgWrapper);
+    
+    textWrapper = document.createElement("div");
+    textWrapper.className = "col-md-8";
+    tittleEl = document.createElement("div");
+    tittleEl.className = "h2";
+    tittleEl.textContent = movie.tittle;
+    summaryEl = document.createElement("p");
+    summaryEl.textContent = movie.plot;
+    textWrapper.appendChild(tittleEl).append(summaryEl);
+    resultDiv.appendChild(textWrapper);
+
+    console.log(resultDiv);
+    document.querySelector("#result-section").appendChild("Hello").appendChild(resultDiv);
+    })
+}).catch(function(errors) {
+    console.log(errors.code)
+})
+})
+
 function searchTitle(movieTitle,page) {
     return new Promise((resolve, reject) => {
         movieArray = [];
@@ -73,36 +114,4 @@ function getMovieData(movieID) {
     })
 }
 
-var promise = searchTitle("Blade Runner",1)
 
-promise.then(function(movieArray) {
-    movieArray.forEach(function(movie){
-
-    console.log(movie)
-
-    var resultDiv = document.createElement("div");
-    resultDiv.className = "col-md-4";
-    var imgWrapper = document.createElement("div")
-    
-    imgWrapper.className = "col-md-4";
-    var imgEl = document.createElement("img");
-    imgEl.setAttribute('src',movie.poster);
-    imgWrapper.appendChild(imgEl)
-    resultDiv.appendChild(imgWrapper);
-    
-    textWrapper = document.createElement("div");
-    textWrapper.className = "col-md-8";
-    tittleEl = document.createElement("div");
-    tittleEl.className = "h2";
-    tittleEl.textContent = movie.tittle;
-    summaryEl = document.createElement("p");
-    summaryEl.textContent = movie.plot;
-    textWrapper.appendChild(tittleEl).append(summaryEl);
-    resultDiv.appendChild(textWrapper);
-
-    console.log(resultDiv);
-    document.querySelector("#result-section").appendChild("Hello").appendChild(resultDiv);
-    })
-}).catch(function(errors) {
-    console.log(errors.code)
-})
