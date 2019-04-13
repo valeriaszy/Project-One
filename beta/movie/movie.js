@@ -8,8 +8,28 @@ class movie {
         this.year=""
         this.poster=""
     }
-    set tittle(value) {
-        this._tittle = value;
+
+    get title() {
+        return this._title;
+    }
+    get plot() {
+        return this._plot;
+    }
+    get director() {
+        return this._director;
+    }
+    get actors() {
+        return this._actors;
+    }
+    get year() {
+        return this._year;
+    }
+    get poster() {
+        return this._poster;
+    }
+
+    set title(value) {
+        this._title = value;
     }
     set plot(value) {
         this._plot = value;
@@ -26,6 +46,86 @@ class movie {
     set poster(value) {
         this._poster = value;
     }
+
+}
+
+function getMovieData(movieID) {
+    return new Promise((resolve, reject) => {
+        url="https://www.omdbapi.com/?apikey=trilogy&i=" + movieID
+        fetch(url,{method:"GET"}).then(response=>{return response.json()})
+        .then(function (data) {
+            result = new movie();
+            result.title=data["Title"];
+            result.plot=data["Plot"];
+            result.director=data["Director"];
+            result.actors=data["Actors"];
+            result.year=data["Year"];
+            result.poster=data["Poster"];
+            console.log("THESE SHOULD PRINT FIRST");
+            console.log("RETURN RESULT");
+            console.log("MOVIE RETURN FROM SEARCH",movieID, result);
+            resolve(result);
+        }).catch(function(error) {
+            reject(error);
+        })
+    })
+}
+
+function searchTitle(movieTitle,page) {
+    return new Promise((resolve, reject) => {
+        url="https://www.omdbapi.com/?apikey=trilogy&s=" + movieTitle + "&page="+page
+        fetch(url,{method:"GET"}).then(response=>{return response.json()})
+        .then(function (data) {
+            amountOfResults = data["totalResults"];
+            resultArray = data["Search"];
+            var movieArray = [];
+            //while (amountOfResults > 0) {
+                resultArray.forEach(function(result) {
+                    let promise1 = getMovieData(result.imdbID);
+                    promise1.then(function(movie){
+                        //console.log('NEW MOVIE', movie)
+                        movieArray.push(movie)
+                    });
+                })
+            return movieArray;
+        }).then(function(responseArray) {
+            console.log("RETURN MOVIE ARRAY",console.log(responseArray));
+            resolve(responseArray);
+        }).catch(function(error) {
+            reject(error);
+        })
+    })
+}
+
+function displayMovie (movie) {
+    //console.log("Hello 1",index)
+
+    console.log(movie.poster);
+    console.log(movie.title);
+    console.log(movie.plot);
+
+    var resultDiv = document.createElement("div");
+    resultDiv.className = "card d-flex";
+    var imgWrapper = document.createElement("div")
+            
+    imgWrapper.className = "col-md-4";
+    var imgEl = document.createElement("img");
+    imgEl.setAttribute('src',movie.poster);
+    imgWrapper.appendChild(imgEl)
+    resultDiv.appendChild(imgWrapper);
+            
+    textWrapper = document.createElement("div");
+    textWrapper.className = "col-md-8";
+    tittleEl = document.createElement("div");
+    tittleEl.className = "h2";
+    tittleEl.textContent = movie.title;
+    summaryEl = document.createElement("p");
+    summaryEl.textContent = movie.plot;
+    textWrapper.appendChild(tittleEl).append(summaryEl);
+    resultDiv.appendChild(textWrapper);
+
+    console.log(resultDiv);
+    document.querySelector("#result-section").appendChild(resultDiv);
 }
 
 document.querySelector("#run-search").addEventListener("click", function(event) {
@@ -34,84 +134,15 @@ document.querySelector("#run-search").addEventListener("click", function(event) 
     console.log("Clicked")
     var search = document.querySelector("#search-title").value;
     console.log(search);
-    var promise = searchTitle(search,1)
 
-    promise.then(function(movieArray) {
-    movieArray.forEach(function(movie){
-
-    console.log(movie)
-
-    var resultDiv = document.createElement("div");
-    resultDiv.className = "col-md-4";
-    var imgWrapper = document.createElement("div")
-    
-    imgWrapper.className = "col-md-4";
-    var imgEl = document.createElement("img");
-    imgEl.setAttribute('src',movie.poster);
-    imgWrapper.appendChild(imgEl)
-    resultDiv.appendChild(imgWrapper);
-    
-    textWrapper = document.createElement("div");
-    textWrapper.className = "col-md-8";
-    tittleEl = document.createElement("div");
-    tittleEl.className = "h2";
-    tittleEl.textContent = movie.tittle;
-    summaryEl = document.createElement("p");
-    summaryEl.textContent = movie.plot;
-    textWrapper.appendChild(tittleEl).append(summaryEl);
-    resultDiv.appendChild(textWrapper);
-
-    console.log(resultDiv);
-    document.querySelector("#result-section").appendChild("Hello").appendChild(resultDiv);
+    searchTitle(search,1).then(function (arr) {
+        setTimeout( function() {
+            console.log("SEARCH TITLE FINISHED")
+            console.log("Here is an array",arr);
+            arr.forEach(function(e) {
+                displayMovie(e);
+            })
+            return arr;
+        },500)
     })
-}).catch(function(errors) {
-    console.log(errors.code)
 })
-})
-
-function searchTitle(movieTitle,page) {
-    return new Promise((resolve, reject) => {
-        movieArray = [];
-        url="https://www.omdbapi.com/?apikey=trilogy&s=" + movieTitle + "&page="+page
-        fetch(url,{method:"GET"}).then(response=>{return response.json()})
-        .then(function (data) {
-            amountOfResults = data["totalResults"];
-            resultArray = data["Search"];
-            //while (amountOfResults > 0) {
-                resultArray.forEach(function(result) {
-                    let promise1 = getMovieData(result.imdbID);
-                    promise1.then(function(movie){
-                        console.log('NEW MOVIE', movie)
-                        movieArray.push(movie)
-                    });
-                })
-        }).then( function() {
-            console.log(movieArray);
-            resolve(movieArray);
-        }).catch(function(error) {
-            reject(error);
-        })
-    })
-}
-
-function getMovieData(movieID) {
-    return new Promise((resolve, reject) => {
-        result = new movie();
-        console.log('SEARCHING FOR MOVIE', movieID)
-        url="https://www.omdbapi.com/?apikey=trilogy&i=" + movieID
-        fetch(url,{method:"GET"}).then(response=>{return response.json()})
-        .then(function (data) {
-            result.title=data["Title"];
-            result.plot=data["Plot"];
-            result.director=data["Director"];
-            result.actors=data["Actors"];
-            result.year=data["Year"];
-            result.poster=data["Poster"];
-            resolve(result);
-        }).catch(function(error) {
-            reject(error);
-        })
-    })
-}
-
-
