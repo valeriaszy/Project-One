@@ -101,7 +101,7 @@ promise.then(function(movieArray) {
     resultDiv.appendChild(textWrapper);
 
     console.log(resultDiv);
-    document.querySelector("#result-list").appendChild("Hello").appendChild(resultDiv);
+    document.querySelector("#result-section").appendChild("Hello").appendChild(resultDiv);
     })
 }).catch(function(errors) {
     console.log(errors.code)

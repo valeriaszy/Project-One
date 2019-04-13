@@ -13,6 +13,7 @@ $(document).ready(function () {
         .done(function (response) {
             console.log(response)
             var results = response.data.results;
+            $('#result-section').append(results.toString());
             var resultsLen = results.length;
             var output = '<ul>';
 
@@ -23,7 +24,7 @@ $(document).ready(function () {
                 }
             }
             output += '</ul>'
-            $('#results').append(output);
+            $('#result-section').append(output);
         });
 
 });
