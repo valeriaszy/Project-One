@@ -53,7 +53,6 @@ function searchTitle(movieTitle,page) {
     })
 }
 
-
 function getMovieData(movieID) {
     return new Promise((resolve, reject) => {
         result = new movie();
