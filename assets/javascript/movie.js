@@ -40,6 +40,7 @@ function searchTitle(movieTitle,page) {
                 resultArray.forEach(function(result) {
                     let promise1 = getMovieData(result.imdbID);
                     promise1.then(function(movie){
+                        console.log('NEW MOVIE', movie)
                         movieArray.push(movie)
                     });
                 })
@@ -55,6 +56,7 @@ function searchTitle(movieTitle,page) {
 function getMovieData(movieID) {
     return new Promise((resolve, reject) => {
         result = new movie();
+        console.log('SEARCHING FOR MOVIE', movieID)
         url="https://www.omdbapi.com/?apikey=trilogy&i=" + movieID
         fetch(url,{method:"GET"}).then(response=>{return response.json()})
         .then(function (data) {
@@ -71,7 +73,7 @@ function getMovieData(movieID) {
     })
 }
 
-var promise = searchTitle("Blade Runner")
+var promise = searchTitle("Blade Runner",1)
 
 promise.then(function(movieArray) {
     movieArray.forEach(function(movie){
