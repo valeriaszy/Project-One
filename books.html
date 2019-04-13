@@ -111,15 +111,16 @@
         crossorigin="anonymous"></script>
     <script src="books.js"></script>
     <script>
-        function handleResponse(response) {
-            for (var i = 0; i < response.items.length; i++) {
-                var item = response.items[i];
-                // in production code, item.text should have the HTML entities escaped.
-                document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title;
-            }
-        }
+        var queryURL = "https://www.googleapis.com/books/v1/volumes?q=harry+potter"
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            $("#book-section").text(JSON.stringify(response));
+            console.log(response)
+        });
+
     </script>
-    <script src="https://www.googleapis.com/books/v1/volumes?q=harry+potter&callback=handleResponse"></script>
 </body>
 
 </html>
