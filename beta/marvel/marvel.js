@@ -1,6 +1,4 @@
 
-function searchMarvelApi(comic) {
-=======
 function searchMarvelApi(comic){
     
     var config = {
@@ -92,6 +90,5 @@ $("#run-search").on("click", function (event) {
 
 });
 
-=======
   });
 
