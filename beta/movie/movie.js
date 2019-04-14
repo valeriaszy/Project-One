@@ -73,7 +73,7 @@ function getMovieData(movieID) {
     })
 }
 
-var promise = searchTitle("Blade Runner",1)
+var promise = searchTitle(movieID,1)
 
 promise.then(function(movieArray) {
     movieArray.forEach(function(movie){
