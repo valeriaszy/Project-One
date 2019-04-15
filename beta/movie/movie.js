@@ -76,17 +76,20 @@ function searchTitle(movieTitle,page) {
         url="https://www.omdbapi.com/?apikey=trilogy&s=" + movieTitle + "&page="+page
         fetch(url,{method:"GET"}).then(response=>{return response.json()})
         .then(function (data) {
-            amountOfResults = data["totalResults"];
             resultArray = data["Search"];
+
             var movieArray = [];
-            //while (amountOfResults > 0) {
-                resultArray.forEach(function(result) {
-                    let promise1 = getMovieData(result.imdbID);
-                    promise1.then(function(movie){
-                        //console.log('NEW MOVIE', movie)
+
+            resultArray.forEach(function(result) {
+                console.log(result)
+                if (result.Type == "movie" || result.Type == "series") {
+                    getMovieData(result.imdbID).then(function(movie) {
                         movieArray.push(movie)
                     });
-                })
+                }
+            })
+
+
             return movieArray;
         }).then(function(responseArray) {
             console.log("RETURN MOVIE ARRAY",console.log(responseArray));
