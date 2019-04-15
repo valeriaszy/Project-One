@@ -1,4 +1,3 @@
-
 class movie {
     constructor () {
         this.title=""
@@ -61,9 +60,6 @@ function getMovieData(movieID) {
             result.actors=data["Actors"];
             result.year=data["Year"];
             result.poster=data["Poster"];
-            console.log("THESE SHOULD PRINT FIRST");
-            console.log("RETURN RESULT");
-            console.log("MOVIE RETURN FROM SEARCH",movieID, result);
             resolve(result);
         }).catch(function(error) {
             reject(error);
@@ -71,29 +67,66 @@ function getMovieData(movieID) {
     })
 }
 
-function searchTitle(movieTitle,page) {
+function parseSinglePage(movieTitle,page) {
     return new Promise((resolve, reject) => {
         url="https://www.omdbapi.com/?apikey=trilogy&s=" + movieTitle + "&page="+page
         fetch(url,{method:"GET"}).then(response=>{return response.json()})
         .then(function (data) {
             resultArray = data["Search"];
-
             var movieArray = [];
+            var waitSig = resultArray.length - 1;
+            var callArray = [];
 
-            resultArray.forEach(function(result) {
-                console.log(result)
-                if (result.Type == "movie" || result.Type == "series") {
-                    getMovieData(result.imdbID).then(function(movie) {
-                        movieArray.push(movie)
-                    });
-                }
-            })
-
-
+            while(waitSig != 0) {
+                resultArray.forEach(function(result) {
+                    if(!callArray.includes(result.imdbID)) {
+                        if (result.Type == "movie" || result.Type == "series") {
+                            getMovieData(result.imdbID).then(function(movie) {
+                                movieArray.push(movie);
+                                waitSig --;
+                            });
+                            callArray.push(result.imdbID);
+                        }
+                    } 
+                    
+                })
+            }
             return movieArray;
         }).then(function(responseArray) {
-            console.log("RETURN MOVIE ARRAY",console.log(responseArray));
             resolve(responseArray);
+        }).catch(function(error) {
+            reject(error);
+        })
+    })
+}
+
+function searchTitle(movieTitle) {
+    return new Promise((resolve, reject)=> {
+        url="https://www.omdbapi.com/?apikey=trilogy&s=" + movieTitle;
+        fetch(url,{method:"GET"}).then(response=>{return response.json()})
+        .then(function (data) {
+            totalResult = data["totalResults"];
+            pageAmount = data["Search"].length;
+
+            var resultArray = [];
+            var pageNumber = 1;
+
+            parseSinglePage(movieTitle,pageNumber).then(function(response) {
+                resultArray.concat(response);
+            })
+            totalResult -= pageAmount
+
+            while (totalResult > pageAmount) {
+                parseSinglePage(movieTitle,pageNumber).then(function(response) {
+                        resultArray.concat(response);
+                })
+                totalResult -= pageAmount
+            }
+            
+            return resultArray;
+        }).then(function(results) {
+            console.log("Array",results)
+            resolve(results);
         }).catch(function(error) {
             reject(error);
         })
@@ -136,7 +169,7 @@ document.querySelector("#run-search").addEventListener("click", function(event) 
     var search = document.querySelector("#search-title").value;
     console.log(search);
 
-    searchTitle(search,1).then(function (arr) {
+    searchTitle(search).then(function (arr) {
         setTimeout( function() {
             arr.forEach(function(e) {
                 displayMovie(e);
