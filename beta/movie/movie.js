@@ -48,6 +48,8 @@ document.querySelector("#run-search").addEventListener("click", function(event) 
     imgWrapper.className = "col-md-4";
     var imgEl = document.createElement("img");
     imgEl.setAttribute('src',movie.poster);
+    imgEl.setAttribute('width','50%');
+    imgEl.className = "image-responsive";
     imgWrapper.appendChild(imgEl)
     resultDiv.appendChild(imgWrapper);
     
