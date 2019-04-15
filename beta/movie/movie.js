@@ -117,3 +117,32 @@ function getMovieData(movieID) {
 }
 
 
+var promise = searchTitle(movieID,1)
+
+promise.then(function(movieArray) {
+    movieArray.forEach(function(movie){
+
+    console.log(movie)
+
+    var resultDiv = document.createElement("div");
+    resultDiv.className = "col-md-4";
+    var imgWrapper = document.createElement("div")
+    
+    imgWrapper.className = "col-md-4";
+    var imgEl = document.createElement("img");
+    imgEl.setAttribute('src',movie.poster);
+    imgWrapper.appendChild(imgEl)
+    resultDiv.appendChild(imgWrapper);
+    
+    textWrapper = document.createElement("div");
+    textWrapper.className = "col-md-8";
+    tittleEl = document.createElement("div");
+    tittleEl.className = "h2";
+    tittleEl.textContent = movie.tittle;
+    summaryEl = document.createElement("p");
+    summaryEl.textContent = movie.plot;
+    textWrapper.appendChild(tittleEl).append(summaryEl);
+    resultDiv.appendChild(textWrapper);
+=======
+
+

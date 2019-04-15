@@ -10,9 +10,50 @@
 </head>
 
 <body>
-    <!-- HTML GOES HERE -->
+    <div class="jumbotron" style="background-color: rgb(223, 223, 223)"><h1 style="color:red; font-family:Helvetica, sans-serif; font-size: 100px; text-align: center">GeekVerse</h1></div>
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        <i class="fa fa-list-alt"></i> Search Parameters
+                    </strong>
+                </div>
+
+                <div class="card-body">
+                    <form id="myForm">
+                        <!-- Here we create the text box for capturing the search term-->
+                        <div class="input-field">
+                            <label for="search-title">Title</label>
+                            <input type="search" class="form-control" id="search-title">
+                        </div>
+                        <!-- Here we have our final submit button -->
+                        <button type="submit" class="btn btn-default" id="run-search">
+                            <i class="fa fa-search"></i> Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    <strong> Result</strong>
+                </div>
+
+                <!-- This main card will hold each of the resulting books -->
+                <div class="card-body" id="result-section">
+                </div>
+            </div>
+        </div>
+    </div>
     <!--TESTING THE MARVEL API-->
-    <div class="container" id="results"></div>
+    <div class="container" id="result-section"></div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -23,7 +64,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="app.js"></script>
+    <script src="beta/marvel/marvel.js"></script>
 </body>
 
 </html>
