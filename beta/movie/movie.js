@@ -47,7 +47,41 @@ class movie {
         this._poster = value;
     }
 
+<<<<<<< HEAD
 }
+=======
+    console.log("Clicked")
+    var search = document.querySelector("#search-title").value;
+    console.log(search);
+    var promise = searchTitle(search,1)
+
+    promise.then(function(movieArray) {
+    movieArray.forEach(function(movie){
+
+    console.log(movie)
+
+    var resultDiv = document.createElement("div");
+    resultDiv.className = "col-md-4";
+    var imgWrapper = document.createElement("div")
+    
+    imgWrapper.className = "col-md-4";
+    var imgEl = document.createElement("img");
+    imgEl.setAttribute('src',movie.poster);
+    imgEl.setAttribute('width','50%');
+    imgEl.className = "image-responsive";
+    imgWrapper.appendChild(imgEl)
+    resultDiv.appendChild(imgWrapper);
+    
+    textWrapper = document.createElement("div");
+    textWrapper.className = "col-md-8";
+    tittleEl = document.createElement("div");
+    tittleEl.className = "h2";
+    tittleEl.textContent = movie.tittle;
+    summaryEl = document.createElement("p");
+    summaryEl.textContent = movie.plot;
+    textWrapper.appendChild(tittleEl).append(summaryEl);
+    resultDiv.appendChild(textWrapper);
+>>>>>>> Anh
 
 function getMovieData(movieID) {
     return new Promise((resolve, reject) => {
