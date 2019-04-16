@@ -102,6 +102,12 @@ function searchTitle(movieTitle,page) {
     })
 }
 
+function pushMovietoDatabase (movie) {
+    database.ref().push({
+        
+    })
+}  
+
 function displayMovie (movie) {
     //console.log("Hello 1",index)
 
