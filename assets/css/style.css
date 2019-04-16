@@ -1,31 +1,42 @@
 body{
-    background: url("comic.png"); 
+    background: url("cinema.jpg"); 
     font-family: Arial, Helvetica, sans-serif
 }
 
  .jumbotron {
-  text-shadow: 2px 2px black;
+  text-shadow: 2px 2px rgb(230, 101, 84);
   width: 20%;
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 400px;
+  margin-left:70px;
+  margin-top:20px;
   clear: both;
   font-family: Arial, Helvetica, sans-serif
-  
  }
   #search-title{
-   
     margin: 0;
-    font-size: 28px;
-    color: chocolate;
+    font-size: 20px;
+    color: red;
     text-align: left
   }
-  
+
+  input[type=search],
+  textarea {
+  height: 45px;
+  font-size: 14px;
+  border: 1px solid #dddddd;
+}
+
   img {
     border-radius: 8px;
+    height:300px;
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
   }
   
 
   #run-search {
+    text-shadow: 2px 2px rgb(230, 101, 84);
     position: absolute;
     width: 10%;
     padding: 15px;
@@ -34,21 +45,22 @@ body{
     line-height: 10px;
     color: whitesmoke;
     text-align: center;
-    background: #4aaaa5;
-   
+    background: rgb(128, 108, 108);
   }
+
   .card-header{
-      color: black;
+    text-shadow: 2px 2px rgb(230, 101, 84);
   }
  
   .container {
-   
+    text-shadow: 2px 2px rgb(230, 101, 84);
     padding: 30px 0;
     clear: both;
     font-size: 12px;
   }
   
 .card {
+  text-shadow: 2px 2px rgb(230, 101, 84);
     font-size: 20px;
     color:black; 
 }
