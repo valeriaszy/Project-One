@@ -5,25 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
+
+    <script src="beta/books/books.js"></script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="beta/assets/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Book Search</title>
 </head>
 
 <body>
-    <!-- HTML GOES HERE -->
-    <!--TESTING THE MARVEL API-->
-    <div class="container" id="results"></div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="app.js"></script>
+    <div class="container">
+        <div class="row">
+            <h1>Book Search</h1>
+
+            <div style="height:118px"></div>
+        </div>
+        <div class="row">
+            <input type="text" class="form-control" id="search-bar"></input>
+            <button type="sumbit" class="btn btn-primary my-2">Submit</button>
+        </div>
+    </div>
+
+    <body>
+        <div class="app">
+            <div class="dictionary-wrapper hidden">
+                <div class="dictionary"></div>
+            </div>
+            <div class="sidebar-wrapper out">
+                <div class="sidebar">
+
+                    <div class="tab-container">
+                        <div class="tab" data-tab="toc">
+                            <div class="toc-list"></div>
+                        </div>
+                    
+                            <div class="search-results"></div>
+                        </div>
+                        <div class="tab info" data-tab="info">
+                            <div class="cover-wrapper">
+                                <img src="" alt="" class="cover">
+                            </div>
+                            <div class="title"></div>
+                            <div class="series-info">
+                                <span class="series-name"></span>
+                                <span class="divider"> - </span>
+                                <span class="series-index"></span>
+                            </div>
+                            <div class="author"></div>
+                            <div class="description"></div>
+                        </div>
+
+
+                        <div class="setting">
+                            <div class="setting-label">Reset</div>
+                            <div class="setting-content">
+                                <a href="javascript:void(0);"
+                                    onclick="if(confirm('Are you sure?')){localStorage.clear();window.location.reload();}">Reset
+                                    All</a>
+                            </div>
+                        </div>
+                        <div class="setting">
+                            <div class="setting-label">About</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="title">
+            <span class="book-title"></span>
+            <span class="divider"> - </span>
+            <span class="book-author"></span>
+        </div>
+
+        <div class="book">
+            <div class="empty-wrapper">
+                <div class="empty">
+
+                </div>
+            </div>
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+    </body>
+
+</html>
+
+
+
+
 </body>
 
 </html>
