@@ -13,6 +13,7 @@
     <title>Test</title>
 </head>
 <body>
+    <div class="jumbotron" style="background-color: rgb(223, 223, 223)"><h1 style="color:red; font-family:Helvetica, sans-serif; font-size: 100px; text-align: center">GeekVerse</h1></div>
     <div class="row">
         <div class="col-sm-12">
             <br>
@@ -43,7 +44,7 @@
     <div class="row">
         <div class="col-sm-12">
             <br>
-            <div class="card">
+            <div class="card" draggable="true"ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div class="card-header">
                     <strong> Result</strong>
                 </div>
@@ -54,6 +55,22 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <div class="card" draggable="true"ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="card-header">
+                        <strong> Result</strong>
+                    </div>
+    
+                    <!-- This main card will hold each of the resulting books -->
+                    <div class="card-body" id="result-section">
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     <!-- Optional JavaScript -->
     <!-- JQuerry Script, delete if not use-->
