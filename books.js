@@ -39,7 +39,7 @@ function searchGoogleBooks(books){
       }
       console.log("book Info: " +bookInfo);
       // here we are saving the bookInfo to the firebase
-      bookData.ref().push(bookInfo);
+      user.push(bookInfo);
     }
   })
 }

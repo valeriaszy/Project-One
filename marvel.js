@@ -18,15 +18,28 @@ function searchMarvelApi(comic) {
             var results = response.data.results;
             //$('#result-section').append(results.toString());
             var resultsLen = results.length;
+            var output = '<div style="display: inline-block">';
 
             for (var i = 0; i < resultsLen; i++) {
                 if (results[i].images.length > 0) {
-                    var imgPath = results[i].images[0].path + '/standard_xlarge.' + results[i].images[0].extension;
-                    user.
-                    output += '<div style="display: inline-block; margin:5px"><img src="' + imgPath + '"><br>' + results[i].title + '<br></div>';
+                    onsaleDate = results[i].dates[0].date;
+
+                    publishDate = new Date(onsaleDate)
+                    
+                    var comicInfo = {
+                        Poster:results[i].images[0].path + '/standard_xlarge.' + results[i].images[0].extension,
+                        Title:results[i].title,
+                        PublishedDate:publishDate.getMonth() +'/'+publishDate.getDate()+'/'+publishDate.getYear()
+                    }
+                    /*var 
+                    output += '<div style="display: inline-block; margin:5px"><img src="' + imgPath + '"><br>' + results[i].title + '<br></div>';*/
                 }
+                user.push(comicInfo);
             }
             
+            output += '</div>';
+            $('#result-section').empty()
+            $('#result-section').append(output);
         });
 
     // Event handler for user clicking the select-artist button
