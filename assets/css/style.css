@@ -1,49 +1,55 @@
 body{
-    background: url("movies.jpg");
+    background: url("comic.png"); 
+    font-family: Arial, Helvetica, sans-serif
 }
-  #result-list{
-      text-shadow: 2px 2px red;
-      
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size:10px;
+
+ .jumbotron {
+  text-shadow: 2px 2px black;
+  width: 20%;
+  max-width: 500px;
+  margin: 0 auto;
+  clear: both;
+  font-family: Arial, Helvetica, sans-serif
+  
+ }
+  #search-title{
+   
+    margin: 0;
+    font-size: 28px;
+    color: chocolate;
+    text-align: left
   }
   
-  .col-md-4{
-    padding: 20px 0;
-    margin: 0;
-    margin-bottom: 20px;
-    font-size: 28px;
-    color: #eee;
-    text-align: center;
-  }
-  .col-md-2 {
-      color: pink;
-  }
   img {
     border-radius: 8px;
   }
+  
 
-  .h2 {
-    text-shadow: 2px 2px red;
-    font-size: 20px;
-    color: grey;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-    
+  #run-search {
+    position: absolute;
+    width: 10%;
+    padding: 15px;
+    margin-bottom: 0;
+    font-weight: 30;
+    line-height: 10px;
+    color: whitesmoke;
+    text-align: center;
+    background: #4aaaa5;
+   
   }
-
-  .col-md-8{
-      color:wheat;
+  .card-header{
+      color: black;
   }
  
   .container {
    
-    color:peachpuff;
-    margin: 0 auto;
+    padding: 30px 0;
+    clear: both;
+    font-size: 12px;
   }
   
-#list-list {
-    font-size: 10px;
-    color:red;
-    
+.card {
+    font-size: 20px;
+    color:black; 
 }
   
