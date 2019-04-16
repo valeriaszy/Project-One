@@ -5,7 +5,7 @@ body{
       text-shadow: 2px 2px red;
       
       font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size:30px;
+      font-size:10px;
   }
   
   .col-md-4{
@@ -42,7 +42,7 @@ body{
   }
   
 #list-list {
-    font-size: 30px;
+    font-size: 10px;
     color:red;
     
 }
