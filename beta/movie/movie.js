@@ -49,6 +49,7 @@ class movie {
 
 }
 
+
 function getMovieData(movieID) {
     return new Promise((resolve, reject) => {
         url="https://www.omdbapi.com/?apikey=trilogy&i=" + movieID
