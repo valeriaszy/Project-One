@@ -32,10 +32,10 @@ function searchGoogleBooks(books){
         Type:"book",
         Title: response.items[i].volumeInfo.title,
         Author: response.items[i].volumeInfo.authors,
-        rating: response.items[i].volumeInfo.averageRating,
+        Rating: response.items[i].volumeInfo.averageRating,
         Plot: response.items[i].volumeInfo.description,
         Poster: response.items[i].volumeInfo.imageLinks.thumbnail,
-        Published:response.items[i].volumeInfo.publishedDate
+        Year:response.items[i].volumeInfo.publishedDate
       }
       console.log("book Info: " +bookInfo);
       // here we are saving the bookInfo to the firebase

@@ -27,6 +27,7 @@ function searchMarvelApi(comic) {
                     publishDate = new Date(onsaleDate)
                     
                     var comicInfo = {
+                        Type:"comic",
                         Poster:results[i].images[0].path + '/standard_xlarge.' + results[i].images[0].extension,
                         Title:results[i].title,
                         PublishedDate:publishDate.getMonth() +'/'+publishDate.getDate()+'/'+publishDate.getYear()
