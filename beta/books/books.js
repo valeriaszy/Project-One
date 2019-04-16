@@ -14,7 +14,7 @@
         var summary = '';
         var img = '';
         var title = '';
-        var rating = '';
+        var rating = '';  
         var creator = '';
 
         $.ajax({
