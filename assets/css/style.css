@@ -1,5 +1,5 @@
 body{
-    background: url("cinema.jpg"); 
+    background: url("gv.jpg"); 
     font-family: Arial, Helvetica, sans-serif
 }
 
@@ -11,50 +11,54 @@ body{
     margin: 0;
     font-size: 20px;
     color: red;
-   
   }
 
   input[type=search],
   textarea {
   height: 45px;
   font-size: 14px;
-  border: 1px solid #dddddd;
+  border: 1px solid rgb(61, 110, 61)
 }
 
   img {
-    border-radius: 8px;
+    border-radius: 48px;
     height:300px;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin-top: 100px;
+    margin-right: 20px;
     float: left;
   }
+  .input-field{
+    background-color: rgb(85, 104, 85)  
   
+  }
 
   #run-search {
-    text-shadow: 2px 2px rgb(230, 101, 84);
+    
     position: absolute;
     width: 10%;
-    padding: 15px;
-    margin-bottom: 0;
-    font-weight: 30;
-    line-height: 10px;
-    color: whitesmoke;
+    color: rgb(61, 102, 61)
     text-align: center;
     background: rgb(128, 108, 108);
    
   }
 
   .card-header{
-    text-shadow: 2px 2px rgb(230, 101, 84);
+    
+    border-radius: 48px;
+    
   }
- 
+ .card-body{
+   margin-top:-10px;
+   background-color: rgb(85, 104, 85)
+  
+ }
   .container {
-    text-shadow: 2px 2px rgb(230, 101, 84);
+    
     padding: 30px 0;
-    clear: both;
+   
     font-size: 12px;
   }
-  
+
   .row{
     display: left;
     -ms-flex-wrap: wrap;
@@ -62,7 +66,7 @@ body{
  
   }
 .card {
-  text-shadow: 2px 2px rgb(230, 101, 84);
+  
     font-size: 20px;
     color:black; 
     margin-top:180px;
