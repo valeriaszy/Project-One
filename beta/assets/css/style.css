@@ -1,49 +1,75 @@
 body{
-    background: url("movies.jpg");
+    background: url("gv.jpg"); 
+    font-family: Arial, Helvetica, sans-serif
 }
-  #result-list{
-      text-shadow: 2px 2px red;
-      
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size:30px;
-  }
-  
-  .col-md-4{
-    padding: 20px 0;
+
+ .jumbotron {
+  width: 0%;
+
+ }
+  #search-title{
     margin: 0;
-    margin-bottom: 20px;
-    font-size: 28px;
-    color: #eee;
-    text-align: center;
-  }
-  .col-md-2 {
-      color: pink;
-  }
-  img {
-    border-radius: 8px;
-  }
-
-  .h2 {
-    text-shadow: 2px 2px red;
     font-size: 20px;
-    color: grey;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-    
+    color: red;
   }
 
-  .col-md-8{
-      color:wheat;
+  input[type=search],
+  textarea {
+  height: 45px;
+  font-size: 14px;
+  border: 1px solid rgb(61, 110, 61)
+}
+
+  img {
+    border-radius: 48px;
+    height:300px;
+    margin-top: 100px;
+    margin-right: 20px;
+    float: left;
   }
- 
-  .container {
-   
-    color:peachpuff;
-    margin: 0 auto;
-  }
+  .input-field{
+    background-color: rgb(85, 104, 85)  
   
-#list-list {
-    font-size: 30px;
-    color:red;
+  }
+
+  #run-search {
     
+    position: absolute;
+    width: 10%;
+    color: rgb(61, 102, 61)
+    text-align: center;
+    background: rgb(128, 108, 108);
+   
+  }
+
+  .card-header{
+    
+    border-radius: 48px;
+    
+  }
+ .card-body{
+   margin-top:-10px;
+   background-color: rgb(85, 104, 85)
+  
+ }
+  .container {
+    
+    padding: 30px 0;
+   
+    font-size: 12px;
+  }
+
+  .row{
+    display: left;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+ 
+  }
+.card {
+  
+    font-size: 20px;
+    color:black; 
+    margin-top:180px;
+    margin-right:100px;
 }
   
