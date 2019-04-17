@@ -11,7 +11,6 @@ body{
     margin: 0;
     font-size: 20px;
     color: red;
-   
   }
 
   input[type=search],
@@ -54,7 +53,7 @@ body{
     clear: both;
     font-size: 12px;
   }
-  
+
   .row{
     display: left;
     -ms-flex-wrap: wrap;
