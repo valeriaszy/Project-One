@@ -22,21 +22,20 @@ function searchMarvelApi(comic) {
             for (var i = 0; i < resultsLen; i++) {
                 if (results[i].images.length > 0) {
                     var imgPath = results[i].images[0].path + '/standard_xlarge.' + results[i].images[0].extension;
-                    user.
-                    output += '<div style="display: inline-block; margin:5px"><img src="' + imgPath + '"><br>' + results[i].title + '<br></div>';
+                    output += '<div style="display: inline-block; margin:5px"draggable="true"ondragstart="drag(event)"><img id="img" draggable="true"ondragstart="drag(event)" src="' + imgPath + '"><br>' + results[i].title + '<br></div>';
                 }
             }
             
         });
 
-    // Event handler for user clicking the select-artist button
+   
 
 }
 
 $("#run-search").on("click", function (event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
-    //Storing the artist name
+    //Storing the Comic
     var inputComic = $("#search-title").val();
     console.log(inputComic)
 
@@ -64,4 +63,71 @@ $("#run-search").on("click", function (event) {
     // database.ref().push(userInput)
 
 });
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+
+
+// class App {
+
+//     static init() {
+  
+//       App.img = document.getElementsByClassName('img')[0]
+  
+//       App.img.addEventListener("dragstart", App.dragstart)
+//       App.img.addEventListener("dragend", App.dragend)
+  
+//       const containers = document.getElementsByClassName('card-body', 'card')
+  
+//       for(const container of containers) {
+//         container.addEventListener("dragover", App.dragover)
+//         container.addEventListener("dragenter", App.dragenter)
+//         container.addEventListener("dragleave", App.dragleave)
+//         container.addEventListener("drop", App.drop)
+//       }
+//     }
+  
+//     static dragstart() {
+//       this.className += "img"
+    
+//       setTimeout(()=>this.className="invisible", 0)
+//     }
+  
+//     static dragend() {
+//       this.className = "img"
+//     }
+  
+//     static dragover(e) {
+//       e.preventDefault()
+//     }
+  
+//     static dragenter(e) {
+//       e.preventDefault()
+//       this.className += " hovered"
+//     }
+  
+//     static dragleave() {
+//       this.className = "card-body", 'card'
+//     }
+  
+//     static drop() {
+//       this.className = "card-body", 'card'
+//       this.append(App.img)
+//     }
+  
+//   }
+  
+//   document.addEventListener("DOMContentLoaded", App.init)
 
