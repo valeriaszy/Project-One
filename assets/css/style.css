@@ -4,19 +4,14 @@ body{
 }
 
  .jumbotron {
-  text-shadow: 2px 2px rgb(230, 101, 84);
-  width: 20%;
-  max-width: 400px;
-  margin-left:70px;
-  margin-top:20px;
-  clear: both;
-  font-family: Arial, Helvetica, sans-serif
+  width: 0%;
+
  }
   #search-title{
     margin: 0;
     font-size: 20px;
     color: red;
-    text-align: left
+   
   }
 
   input[type=search],
@@ -31,7 +26,7 @@ body{
     height:300px;
     margin-top: 10px;
     margin-right: 10px;
-    float: right;
+    float: left;
   }
   
 
@@ -46,6 +41,7 @@ body{
     color: whitesmoke;
     text-align: center;
     background: rgb(128, 108, 108);
+   
   }
 
   .card-header{
@@ -59,9 +55,17 @@ body{
     font-size: 12px;
   }
   
+  .row{
+    display: left;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+ 
+  }
 .card {
   text-shadow: 2px 2px rgb(230, 101, 84);
     font-size: 20px;
     color:black; 
+    margin-top:180px;
+    margin-right:100px;
 }
   
