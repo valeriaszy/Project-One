@@ -1,3 +1,4 @@
+//Firebase initialize
 var config = {
     apiKey: "AIzaSyA8kEgnv75jLgZznRXBSpD7FGHd0ulv8Jo",
     authDomain: "project-one-7cd8f.firebaseapp.com",
@@ -9,29 +10,31 @@ var config = {
 firebase.initializeApp(config);
   
 var database = firebase.database();
+//End Firebase initilize
 
+//Asign value to databse path
 var root=database.ref();
-var user = database.ref().push();
-var userKey = user.key;
-
+var user = database.ref().push(); //to add a new user and save his reference
+var userKey = user.key; //to store userkey
 
 document.querySelector("#run-search").addEventListener("click", function(event) {
     event.preventDefault();
 
     var search = document.querySelector("#search-title").value;
     console.log(search);
-
+    
+    //function for searching movie
     searchTitle(search,1);
+    
+    //function for search book
     searchGoogleBooks(search);
+
+    //funcitoin for search comic
     searchMarvelApi(search);
 })
 
-user.on("child_added",function(childSnap) {
+user.on("child_added",function(childSnap) {// launch call back function to display the firebase data locally)
     childData = childSnap.val();
-
-    console.log("TITTLE:",childData.Title);
-    console.log("TYPE:",childData.Type);
-    console.log("+++++++++++++++++");
 
     var resultDiv = document.createElement("div");
     resultDiv.className = 'card d-flex';
