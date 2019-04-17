@@ -49,23 +49,31 @@ class movie {
 
 }
 
-
 function getMovieData(movieID) {
     return new Promise((resolve, reject) => {
         url="https://www.omdbapi.com/?apikey=trilogy&i=" + movieID
         fetch(url,{method:"GET"}).then(response=>{return response.json()})
         .then(function (data) {
-            result = new movie();
-            result.title=data["Title"];
-            result.plot=data["Plot"];
-            result.director=data["Director"];
-            result.actors=data["Actors"];
-            result.year=data["Year"];
-            result.poster=data["Poster"];
-            console.log("THESE SHOULD PRINT FIRST");
-            console.log("RETURN RESULT");
-            console.log("MOVIE RETURN FROM SEARCH",movieID, result);
-            resolve(result);
+            if(data["Poster"] != "N/A") {
+                result = new movie();
+                result.title=data["Title"];
+                result.plot=data["Plot"];
+                result.director=data["Director"];
+                result.actors=data["Actors"];
+                result.year=data["Year"];
+                result.poster=data["Poster"];
+
+                user.push({
+                    Type:"movie",
+                    Poster:data["Poster"],
+                    Title:data["Title"],
+                    Plot:data["Plot"],
+                    Year:data["Year"],
+                    Director:data["Director"],
+                    Actors:data["Actors"]
+                })
+                resolve(result);
+            }
         }).catch(function(error) {
             reject(error);
         })
@@ -101,6 +109,17 @@ function searchTitle(movieTitle,page) {
     })
 }
 
+function pushMovieToDatabase (movie) {
+    database.ref().push({
+        Poster:movie.poster,
+        Title:movie.title,
+        Plot:movie.plot,
+        Year:movie.year,
+        Type:"movie",
+
+    })
+}  
+
 function displayMovie (movie) {
     //console.log("Hello 1",index)
 
@@ -131,18 +150,3 @@ function displayMovie (movie) {
     console.log(resultDiv);
     document.querySelector("#result-section").appendChild(resultDiv);
 }
-
-document.querySelector("#run-search").addEventListener("click", function(event) {
-    event.preventDefault();
-    var search = document.querySelector("#search-title").value;
-    console.log(search);
-
-    searchTitle(search,1).then(function (arr) {
-        setTimeout( function() {
-            arr.forEach(function(e) {
-                displayMovie(e);
-            })
-            return arr;
-        },500)
-    })
-})
