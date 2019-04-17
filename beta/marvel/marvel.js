@@ -22,12 +22,7 @@ function searchMarvelApi(comic) {
             for (var i = 0; i < resultsLen; i++) {
                 if (results[i].images.length > 0) {
                     var imgPath = results[i].images[0].path + '/standard_xlarge.' + results[i].images[0].extension;
-<<<<<<< HEAD
                     output += '<div style="display: inline-block; margin:5px"draggable="true"ondragstart="drag(event)"><img id="img" draggable="true"ondragstart="drag(event)" src="' + imgPath + '"><br>' + results[i].title + '<br></div>';
-=======
-                    user.
-                    output += '<div style="display: inline-block; margin:5px"><img src="' + imgPath + '"><br>' + results[i].title + '<br></div>';
->>>>>>> 84d9c4900a4aca9b088ba587a47218fb53e0c008
                 }
             }
             
