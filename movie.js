@@ -62,9 +62,16 @@ function getMovieData(movieID) {
                 result.actors=data["Actors"];
                 result.year=data["Year"];
                 result.poster=data["Poster"];
-                console.log("THESE SHOULD PRINT FIRST");
-                console.log("RETURN RESULT");
-                console.log("MOVIE RETURN FROM SEARCH",movieID, result);
+
+                user.push({
+                    Type:"movie",
+                    Poster:data["Poster"],
+                    Title:data["Title"],
+                    Plot:data["Plot"],
+                    Year:data["Year"],
+                    Director:data["Director"],
+                    Actors:data["Actors"]
+                })
                 resolve(result);
             }
         }).catch(function(error) {
@@ -102,9 +109,14 @@ function searchTitle(movieTitle,page) {
     })
 }
 
-function pushMovietoDatabase (movie) {
+function pushMovieToDatabase (movie) {
     database.ref().push({
-        
+        Poster:movie.poster,
+        Title:movie.title,
+        Plot:movie.plot,
+        Year:movie.year,
+        Type:"movie",
+
     })
 }  
 
