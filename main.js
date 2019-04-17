@@ -8,17 +8,39 @@ var config = {
     messagingSenderId: "147656414734"
 };
 firebase.initializeApp(config);
-  
 var database = firebase.database();
 //End Firebase initilize
 
 //Asign value to databse path
 var root=database.ref();
-var user = database.ref().push(); //to add a new user and save his reference
-var userKey = user.key; //to store userkey
+
+//condition to check for user in local storage
+if (!localStorage.getItem("geekverse-key")) {//condition 1: new user
+    var user = database.ref().push(); //to add a new user and save his reference
+    var userKey = user.key; //to store userkey
+    localStorage.setItem("geekverse-key",userKey)
+} else {
+    var userKey = localStorage.getItem("geekverse-key");
+    var user = database.ref("/"+userKey);
+}
+
+function clearPreviousSearch() {
+    //removing current user (also the whole branch)
+    user.remove().then( function() {
+        resultNode = document.querySelector("#result-section");
+        while(resultNode.firstChild) {
+            resultNode.removeChild(resultNode.firstChild);
+        }
+    })
+    //re-add user
+    var child = root.push();
+    child.key = userKey;
+}
 
 document.querySelector("#run-search").addEventListener("click", function(event) {
     event.preventDefault();
+
+    clearPreviousSearch();
 
     var search = document.querySelector("#search-title").value;
     console.log(search);
