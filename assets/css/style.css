@@ -1,7 +1,6 @@
 body{
     background: url("gv.jpg"); 
     font-family: Arial, Helvetica, sans-serif
- 
 }
 
  .jumbotron {
@@ -9,7 +8,6 @@ body{
 
  }
   #search-title{
-   
     margin: 0;
     font-size: 20px;
     color: red;
@@ -19,26 +17,25 @@ body{
   textarea {
   height: 45px;
   font-size: 14px;
-  border: 1px solid rgb(68, 153, 142)
+  border: 1px solid rgb(61, 110, 61)
 }
 
   img {
-    border-radius: 100px;
+    border-radius: 48px;
     height:300px;
     margin-top: 100px;
     margin-right: 20px;
-    float: right;
+    float: left;
   }
   .input-field{
-   
-    background-color: rgb(68, 153, 142)
-    
+    background-color: rgb(85, 104, 85)  
+  
   }
 
   #run-search {
     
     position: absolute;
-    width: 15%;
+    width: 10%;
     color: rgb(61, 102, 61)
     text-align: center;
     background: rgb(128, 108, 108);
@@ -52,7 +49,7 @@ body{
   }
  .card-body{
    margin-top:-10px;
-   background-color: rgb(68, 153, 142)
+   background-color: rgb(85, 104, 85)
   
  }
   .container {
