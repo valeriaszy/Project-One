@@ -36,7 +36,7 @@ body{
     
     position: absolute;
     width: 10%;
-    color: rgb(61, 102, 61)
+    color: rgb(61, 102, 61);
     text-align: center;
     background: rgb(128, 108, 108);
    
@@ -71,6 +71,6 @@ body{
 }
 
 .card-background {
-  background-color: rbg(83,161,151) !important;
+  background-color:rgb(83,161,151) !important;
 }
   
