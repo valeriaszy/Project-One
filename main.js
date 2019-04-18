@@ -73,7 +73,7 @@ user.on("child_added",function(childSnap) {// launch call back function to displ
 
     //for body area
     var bodyRow = document.createElement("div");
-    bodyRow.className = "card-body d-flex flex-row";
+    bodyRow.className = "card-body d-flex flex-row card-background";
     var imgWrapper = document.createElement("div")        
     imgWrapper.className = "col-md-4";
     var imgEl = document.createElement("img");

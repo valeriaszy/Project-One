@@ -72,4 +72,8 @@ body{
     font-size: 20px;
     color:black; 
 }
+
+.card-background {
+  background-color:rgb(83,161,151) !important;
+}
   
