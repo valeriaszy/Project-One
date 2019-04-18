@@ -77,7 +77,7 @@ user.on("child_added",function(childSnap) {// launch call back function to displ
     var imgWrapper = document.createElement("div")        
     imgWrapper.className = "col-md-4";
     var imgEl = document.createElement("img");
-    imgEl.className = "img-fluid rounded-0";
+    imgEl.className = "img-fluid rounded-0 m-0";
     imgEl.setAttribute("width","100%");
     imgEl.setAttribute('src',childData.Poster); 
     imgWrapper.appendChild(imgEl)
